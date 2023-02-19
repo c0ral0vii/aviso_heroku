@@ -14,13 +14,7 @@ from datetime import timedelta
 import django
 from pathlib import Path
 import os
-from urllib.parse import quote
-from django.utils.encoding import smart_str
-from django.utils.encoding import force_str
 
-django.utils.encoding.smart_text = smart_str
-django.utils.encoding.force_text = force_str
-django.utils.http.urlquote = quote
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -35,7 +29,7 @@ SECRET_KEY = 'django-insecure-mp3bpn%gn(6i2fmvi^y@$q@_x!jmw2hti$ba+-ij@z3ghy^b#m
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['axiosapi.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['aviso.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
@@ -156,7 +150,7 @@ CORS_ORIGIN_WHITELIST = (
     'http://192.168.0.50:3000',  # for network
     'http://localhost:8000',  # for localhost (Developlemt)
     'http://192.168.0.50:8000',  # for network (Development)
-    'https://axiosapi.herokuapp.com',
+    'https://aviso.herokuapp.com/',
 )
 
 CSRF_TRUSTED_ORIGINS = [
@@ -164,7 +158,7 @@ CSRF_TRUSTED_ORIGINS = [
     'http://192.168.0.50:3000',  # for network
     'http://localhost:8000',  # for localhost (Developlemt)
     'http://192.168.0.50:8000',  # for network (Development)
-    'https://axiosapi.herokuapp.com',
+    'https://aviso.herokuapp.com/',
 ]
 
 CORS_ALLOW_HEADERS = [
