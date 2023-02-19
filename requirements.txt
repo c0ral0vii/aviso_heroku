@@ -89,7 +89,6 @@ jsonschema==4.17.3
 jwcrypto==1.4.2
 keyring==23.11.0
 lark==1.1.5
-layoutswitcherlib==0.8.33
 LibAppArmor==3.1.2
 libfdt==1.6.1
 lit==15.0.7.dev0
