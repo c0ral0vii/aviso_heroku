@@ -150,7 +150,7 @@ CORS_ORIGIN_WHITELIST = (
     'http://192.168.0.50:3000',  # for network
     'http://localhost:8000',  # for localhost (Developlemt)
     'http://192.168.0.50:8000',  # for network (Development)
-    'https://aviso.herokuapp.com/',
+    'https://aviso.herokuapp.com',
 )
 
 CSRF_TRUSTED_ORIGINS = [
@@ -158,7 +158,7 @@ CSRF_TRUSTED_ORIGINS = [
     'http://192.168.0.50:3000',  # for network
     'http://localhost:8000',  # for localhost (Developlemt)
     'http://192.168.0.50:8000',  # for network (Development)
-    'https://aviso.herokuapp.com/',
+    'https://aviso.herokuapp.com',
 ]
 
 CORS_ALLOW_HEADERS = [
