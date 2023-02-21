@@ -4,6 +4,7 @@ from rest_framework.parsers import JSONParser
 from rest_framework.renderers import JSONRenderer
 from .models import *
 
+
 class NewsSerializer(serializers.ModelSerializer):
     class Meta:
         model = News
