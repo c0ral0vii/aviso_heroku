@@ -5,7 +5,6 @@ from django.db.models.signals import post_save
 from django.urls import reverse
 
 
-
 class News(models.Model):
     title = models.CharField('Заголовок новости', max_length=150)
     content = models.TextField('Текст новости')
@@ -16,7 +15,8 @@ class News(models.Model):
         return self.title
     
     class Meta:
-        pass
+        verbose_name = 'Новости'
+        verbose_name_plural = 'Новости'
         
 
 class Articles(models.Model):
@@ -29,7 +29,8 @@ class Articles(models.Model):
         return self.title
     
     class Meta:
-        pass
+        verbose_name = 'Статьи'
+        verbose_name_plural = 'Статьи'
     
 
 class Order(models.Model):
@@ -45,6 +46,7 @@ class Order(models.Model):
         return self.title
     
     class Meta:
-        pass
+        verbose_name = 'Заказы'
+        verbose_name_plural = 'Заказы'
 
     
