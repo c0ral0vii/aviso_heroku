@@ -50,6 +50,13 @@ function NavBar() {
                 <p>Топ</p>
               </div>
             </NavLink>
+
+            <NavLink to="/faq">
+              <div className="nav_list_item">
+                <p>Помощь</p>
+              </div>
+            </NavLink>
+
             <NavLink to="/articles">
               <div className="nav_list_item">
                 <p>Статьи</p>
@@ -127,17 +134,15 @@ function NavBar() {
           </div>
         </NavLink>
         <NavLink to="/login">
-        <div
-          className="nav_list_item"
-          data-aos="fade-down"
-          data-aos-duration="1000"
-        >
-          <p>Войти</p>
-        </div>
-      </NavLink>
+          <div
+            className="nav_list_item"
+            data-aos="fade-down"
+            data-aos-duration="1000"
+          >
+            <p>Войти</p>
+          </div>
+        </NavLink>
       </div>
-
-  
     </>
   );
 }
