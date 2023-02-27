@@ -52,7 +52,7 @@ function AuthPage() {
 
             <div className="create_acc_form">
               <form onSubmit={handleSubmit(onSubmit)}>
-                <p>Логин (англ.) (Изменить будет невозможно)</p>
+                <p>Логин</p>
                 <input
                   type="text" 
                   {...register("username", { required: true })}
@@ -61,14 +61,14 @@ function AuthPage() {
                   <span>* Логин является обьязательным!</span>
                 )}
 
-                <p>E-mail (Изменить будет невозможно)</p>
+                <p>E-mail</p>
                 <input
                   type="email"
                   {...register("email", { required: true })}
                 />
                 {errors.email && <span>* E-mail является обьязательным!</span>}
 
-                <p>Пароль (Пароль должен быть от 6 символов)</p>
+                <p>Пароль</p>
                 <input
                   type="password"
                   {...register(
