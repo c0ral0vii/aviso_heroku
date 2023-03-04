@@ -21,3 +21,54 @@ class OrdersSerializer(serializers.ModelSerializer):
     class Meta:
         model = Order
         fields = '__all__'
+
+
+class ProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Profile
+        fields = '__all__'
+
+
+class ProfileUpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Profile
+        fields = ('avatar', 'bio')
+
+    def update(self, instance, validated_data):
+        instance.avatar = validated_data.get('avatar', instance.avatar)
+        instance.bio = validated_data.get('bio', instance.bio)
+        instance.save()
+
+        return instance
+
+
+class NewsUpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = News
+        fields = '__all__'
+
+    def update(self, instance, validated_data):
+        instance.title = validated_data.get('title', instance.title)
+        instance.img = validated_data.get('img', instance.img)
+        instance.content = validated_data.get('content', instance.content)
+        instance.is_published = validated_data.get('is_published', instance.is_published)
+
+        instance.save()
+
+        return instance
+
+
+class OrderUpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Order
+        fields = '__all__'
+
+    def update(self, instance, validated_data):
+        instance.title = validated_data.get('title', instance.title)
+        instance.img = validated_data.get('img', instance.img)
+        instance.content = validated_data.get('content', instance.content)
+        instance.is_published = validated_data.get('is_published', instance.is_published)
+
+        instance.save()
+
+        return instance
