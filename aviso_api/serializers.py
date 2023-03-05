@@ -32,11 +32,18 @@ class ProfileSerializer(serializers.ModelSerializer):
 class ProfileUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
-        fields = ('avatar', 'bio')
+        fields = ('avatar', 'bio', 'orders')
+        extra_kwargs = {
+            'orders': {
+                'required': False,
+            },
+        }
 
     def update(self, instance, validated_data):
         instance.avatar = validated_data.get('avatar', instance.avatar)
         instance.bio = validated_data.get('bio', instance.bio)
+        if validated_data.get('orders'):
+            instance.orders.set(validated_data.get('orders'))
         instance.save()
 
         return instance

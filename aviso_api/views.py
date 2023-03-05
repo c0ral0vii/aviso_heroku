@@ -40,10 +40,12 @@ def get_articles(request):
 @api_view(['GET'])
 def get_one_article(request, **kwargs):
     pk = kwargs.get('pk', None)
+
     try:
         article = Articles.objects.get(pk=pk)
     except:
         return Response({'status': 'Dont have this article!'}, status=400)
+
     serializer = NewsSerializer(article)
     return Response(serializer.data)
 
@@ -56,12 +58,14 @@ def get_orders(request):
 
 
 @api_view(['GET'])
-def get_one_order(request, **kwargs):
+def order(request, **kwargs):
     pk = kwargs.get('pk', None)
+
     try:
         order = Order.objects.get(pk=pk)
     except:
         return Response({'status': 'Dont have this order!'}, status=400)
+
     serializer = NewsSerializer(order)
     return Response(serializer.data)
 
@@ -88,9 +92,9 @@ def get_profile_data(request):
     return Response(serializer.data)
 
 
-@api_view(['PUT'])
+@api_view(['PUT', 'GET'])
 @permission_classes([IsAuthenticated])
-def put_update_profile(request, **kwargs):
+def profile_data(request, **kwargs):
     username = kwargs.get('user', None)
 
     try:
