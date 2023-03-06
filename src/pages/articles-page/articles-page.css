@@ -1,7 +1,7 @@
 .articles_page {
   width: 1400px;
   margin: 0 auto;
-  padding: 60px 0;
+  padding: 60px 0 80px;
 }
 
 .articles_page_title h1 {
@@ -14,6 +14,37 @@
 
 .articles_error p {
   text-align: center;
+}
+.article_title p {
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+.article_title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.article_title p {
+  display: inline-block;
+  position: relative;
+}
+
+.article_title p::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 1.5px;
+  bottom: 0;
+  left: 0;
+  background-color: #000;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.article_title p:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
 }
 
 @media only screen and (max-width: 1420px) {
