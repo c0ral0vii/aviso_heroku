@@ -11,6 +11,7 @@ urlpatterns = [
     path('api/news/<int:pk>/', get_one_news),
 
     path('api/orders/', get_orders),
+    path('api/orders/create/', create_order),
     path('api/orders/<int:pk>/', order),
     path('api/orders/change/<int:pk>/', change_order),
 
