@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
-import Error404 from "./components/error404/error404";
+// import Error404 from "./components/error404/error404";
 import Footer from "./components/footer/footer";
 import Loader from "./components/loader/loader";
 import NavBar from "./components/nav-bar/nav-bar";
