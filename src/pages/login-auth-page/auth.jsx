@@ -26,7 +26,7 @@ function AuthPage() {
     if (data.create_password !== data.retry_password) {
       alert("Введите пароль повторно");
     }
-        axios.post('http://127.0.0.1:8000/api/auth/users/', {
+        axios.post('http://127.0.0.1:8000/auth/users/', {
             email: data.email,
             username: data.username,
             re_password: data.retry_password,
