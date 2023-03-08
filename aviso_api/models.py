@@ -22,11 +22,12 @@ class News(models.Model):
 
 class Articles(models.Model):
     title = models.CharField('Заголовок статьи', max_length=150)
+    preview = models.TextField('Превью')
     img = models.ImageField('Фотография статьи', default='default.jpg', null=True, blank=True, upload_to='article/')
     content = models.TextField('Текс статьи')
     time_created = models.DateTimeField('Дата создания', auto_now_add=True)
     is_published = models.BooleanField('Публично ли', default=True)
-    
+
     def __str__(self):
         return self.title
     
@@ -37,7 +38,6 @@ class Articles(models.Model):
 
 class Order(models.Model):
     title = models.CharField('Название заказа', max_length=150)
-    preview = models.CharField('Превью', max_length=150, null=True, blank=True)
     img = models.ImageField('Фотография заказа', default='default.jpg', null=True, blank=True, upload_to='orders/')
     content = models.TextField('Текс заказа')
     time_created = models.DateTimeField('Дата создания', auto_now_add=True)

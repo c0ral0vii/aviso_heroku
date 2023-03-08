@@ -9,7 +9,7 @@ admin.site.unregister(Group)
 
 
 class ArticlesAdmin(admin.ModelAdmin):
-    list_display = ('title', 'content', 'time_created', 'is_published')
+    list_display = ('title', 'preview',  'content', 'time_created', 'is_published')
     list_filter = ('is_published', )
 
 
@@ -25,7 +25,7 @@ admin.site.register(News, NewsAdmin)
 
     
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ('creator', 'title', 'preview', 'content', 'time_created', 'is_published')
+    list_display = ('creator', 'title', 'content', 'time_created', 'is_published')
     list_filter = ('is_published',)
 
 

@@ -111,7 +111,7 @@ def profile_data(request, **kwargs):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def create_order(request):
-    serializer = OrderCreateSerializer(data=request.data)
+    serializer = OrdersSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save()
         return Response(serializer.data, status=200)
