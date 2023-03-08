@@ -152,6 +152,23 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+REACT_ROUTES = [
+    'login',
+    'auth',
+    'faq',
+    'support',
+    'contact',
+    'privasy-policy',
+    'agreement',
+    'rules',
+    'advertise',
+    'competition',
+    'articles',
+    'top',
+    'pays',
+    'news',
+]
+
 CORS_ALLOW_CREDENTIALS = True
 
 CORS_ORIGIN_WHITELIST = (
