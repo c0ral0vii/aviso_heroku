@@ -39,10 +39,10 @@ def get_articles(request):
 
 @api_view(['GET'])
 def get_one_article(request, **kwargs):
-    pk = kwargs.get('pk', None)
+    id = kwargs.get('id', None)
 
     try:
-        article = Articles.objects.get(pk=pk)
+        article = Articles.objects.get(id=id)
     except:
         return Response({'status': 'Dont have this article!'}, status=400)
 
@@ -59,10 +59,10 @@ def get_orders(request):
 
 @api_view(['GET'])
 def order(request, **kwargs):
-    pk = kwargs.get('pk', None)
+    id = kwargs.get('id', None)
 
     try:
-        order = Order.objects.get(pk=pk)
+        order = Order.objects.get(id=id)
     except:
         return Response({'status': 'Dont have this order!'}, status=400)
 
@@ -73,11 +73,12 @@ def order(request, **kwargs):
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])
 def change_order(request, **kwargs):
-    pk = kwargs.get('pk', None)
+    id = kwargs.get('id', None)
+
     try:
-        instance = Order.objects.get(pk=pk)
+        instance = Order.objects.get(id=id)
     except:
-        return Response({'status': 'Error!'}, status=400)
+        return Response({'status': 'error'}, status=400)
 
     serializer = OrderUpdateSerializer(data=request.data, instance=instance)
     serializer.is_valid(raise_exception=True)
@@ -102,7 +103,7 @@ def profile_data(request, **kwargs):
     except:
         return Response({'status': 'Ошибка. Свяжитесь со службой поддержки'}, status=400)
 
-    serializer = ProfileUpdateSerializer(data=request.data, instance=instance)
+    serializer = ProfileUpdateSerializer(data=request.data, files=request.FILES, instance=instance)
     serializer.is_valid(raise_exception=True)
     serializer.save()
     return Response(serializer.data)

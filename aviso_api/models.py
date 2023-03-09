@@ -38,7 +38,7 @@ class Articles(models.Model):
 
 class Order(models.Model):
     title = models.CharField('Название заказа', max_length=150)
-    img = models.ImageField('Фотография заказа', default='default.jpg', null=True, blank=True, upload_to='orders/')
+    img = models.ImageField('Фотография заказа', default='orders/default.jpg', null=True, blank=True, upload_to='orders/')
     content = models.TextField('Текс заказа')
     time_created = models.DateTimeField('Дата создания', auto_now_add=True)
     is_published = models.BooleanField('Публично ли', default=True)
