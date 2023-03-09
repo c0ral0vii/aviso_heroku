@@ -7,7 +7,7 @@ from django.urls import reverse
 
 class News(models.Model):
     title = models.CharField('Заголовок новости', max_length=150)
-    img = models.ImageField('Фотография новости', default='default.jpg', null=True, blank=True, upload_to='news/')
+    img = models.ImageField('Фотография новости', default='news/default.jpg', null=True, blank=True, upload_to='news/')
     content = models.TextField('Текст новости')
     time_created = models.DateTimeField('Дата создания', auto_now_add=True)
     is_published = models.BooleanField('Публично ли', default=True)
@@ -23,7 +23,7 @@ class News(models.Model):
 class Articles(models.Model):
     title = models.CharField('Заголовок статьи', max_length=150)
     preview = models.TextField('Превью')
-    img = models.ImageField('Фотография статьи', default='default.jpg', null=True, blank=True, upload_to='article/')
+    img = models.ImageField('Фотография статьи', default='articles/default.jpg', null=True, blank=True, upload_to='articles/')
     content = models.TextField('Текс статьи')
     time_created = models.DateTimeField('Дата создания', auto_now_add=True)
     is_published = models.BooleanField('Публично ли', default=True)
@@ -56,7 +56,7 @@ class Order(models.Model):
 class Profile(models.Model):
     user = models.OneToOneField(User, verbose_name='Имя пользователя', on_delete=models.CASCADE)
     orders = models.ManyToManyField(Order, verbose_name='Заказы', related_name='order')
-    avatar = models.ImageField('Фотография профиля', default='avatar_default.jpg', null=True, blank=True, upload_to='profile/')
+    avatar = models.ImageField('Фотография профиля', default='profiles/avatar_default.jpg', null=True, blank=True, upload_to='profiles/')
     bio = models.CharField('Описание', max_length=1000, default='Пусто')
 
     @receiver(post_save, sender=User)
