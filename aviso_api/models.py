@@ -43,7 +43,7 @@ class Order(models.Model):
     time_created = models.DateTimeField('Дата создания', auto_now_add=True)
     is_published = models.BooleanField('Публично ли', default=True)
     
-    creator = models.OneToOneField(User, verbose_name='Создатель', on_delete=models.SET_NULL, null=True, related_name='creator')
+    creator = models.ForeignKey(User, verbose_name='Создатель', on_delete=models.SET_NULL, null=True, related_name='creator')
 
     def __str__(self):
         return self.title
