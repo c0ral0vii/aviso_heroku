@@ -212,6 +212,8 @@ DJOSER = {
     'PASSWORD_RESET_CONFIRM_URL': '#/password/reset/confirm/{uid}/{token}',
     'USERNAME_RESET_CONFIRM_URL': '#/username/reset/confirm/{uid}/{token}',
     'ACTIVATION_URL': '#/activate/{uid}/{token}',
+    'SOCIAL_AUTH_ALLOWED_REDIRECT_URIS': ['https://aviso.herokuapp.com', 'https://aviso.herokuapp.com/login',
+                                          'https://aviso.herokuapp.com/home'],
     'USER_CREATE_PASSWORD_RETYPE': True,
 }
 
@@ -235,6 +237,7 @@ AUTHENTICATION_BACKENDS = (
 SOCIAL_AUTH_VK_OAUTH2_KEY = '51550298'
 SOCIAL_AUTH_VK_OAUTH2_SECRET = 'nrzU6iPW3rLIGYvaDvrO'
 
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '869487032777-s2svgl3jre6vnc7694ceiaj0cp6hcat3.apps.googleusercontent.com'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = ['https://www.googleapis.com/auth/userinfo.email', 'https://www.googleapis.com/auth/userinfo.profile']
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '419222773630-j0kj8922mcg23r6m2k7f6c1tm04fen5t.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = ['https://www.googleapis.com/auth/userinfo.email', 'https://www.googleapis.com/auth/userinfo.profile', 'openid']
+SOCIAL_AUTH_GOOGLE_OAUTH2_EXTRA_DATA = ['first_name', 'last_name']

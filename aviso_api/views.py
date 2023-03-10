@@ -7,6 +7,8 @@ from rest_framework import viewsets, permissions, generics
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
+from social_core.backends.google import GoogleOAuth2
+from social_core.backends.vk import VKOAuth2
 
 from .serializers import *
 from .models import *
