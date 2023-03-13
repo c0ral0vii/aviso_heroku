@@ -38,6 +38,7 @@ function AuthPage() {
     if (response) {
       dispatch(createAccount(response.data));
     }
+
   };
 
   if (isAuth === true) {
