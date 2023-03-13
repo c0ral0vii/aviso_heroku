@@ -2,11 +2,16 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { NavLink } from "react-router-dom";
-import "./login-auth.css";
-import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { NavLink, useNavigate } from "react-router-dom";
+import { authAPI } from "../../api/api";
+import { createAccount } from "../../redux/auth-reducer";
 
+import "./login-auth.css";
 function AuthPage() {
+  const isAuth = useSelector((state) => state.auth.isAuth);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   React.useEffect(() => {
     document.title = `Регистрация`;
   }, []);
@@ -20,29 +25,30 @@ function AuthPage() {
     formState: { errors },
   } = useForm();
 
+  const onSubmit = async (data) => {
+    let formdata = new FormData();
+    formdata.append("email", `${data.email}`);
+    formdata.append("username", `${data.username}`);
+    formdata.append("password", `${data.password}`);
+    formdata.append("re_password", `${data.re_password}`);
 
+    let bodyContent = formdata;
+    let response = await authAPI.auth(bodyContent);
 
-  const onSubmit = (data) => {
-    if (data.create_password !== data.retry_password) {
-      alert("Введите пароль повторно");
+    if (response) {
+      dispatch(createAccount(response.data));
     }
-        axios.post('http://127.0.0.1:8000/auth/users/', {
-            email: data.email,
-            username: data.username,
-            re_password: data.retry_password,
-            password: data.create_password,
-        })
-        .then(function (response) {
-            console.log(response);
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
-};
+
+  };
+
+  if (isAuth === true) {
+    navigate("/profile");
+  }
+
   return (
     <div className="profile">
       <div className="profile_wrapper">
-        <div className="autorizing_page">   
+        <div className="autorizing_page">
           <div
             className="create_acc"
             data-aos="fade-up"
@@ -54,10 +60,10 @@ function AuthPage() {
               <form onSubmit={handleSubmit(onSubmit)}>
                 <p>Логин</p>
                 <input
-                  type="text" 
+                  type="text"
                   {...register("username", { required: true })}
                 />
-                {errors.first_name && (
+                {errors.username && (
                   <span>* Логин является обьязательным!</span>
                 )}
 
@@ -72,12 +78,12 @@ function AuthPage() {
                 <input
                   type="password"
                   {...register(
-                    "create_password",
+                    "password",
                     { min: 4, max: 8 },
                     { required: true }
                   )}
                 />
-                {errors.create_password && (
+                {errors.password && (
                   <span>* Пароль должен быть от 6 символов!</span>
                 )}
 
@@ -85,12 +91,12 @@ function AuthPage() {
                 <input
                   type="password"
                   {...register(
-                    "retry_password",
+                    "re_password",
                     { min: 4, max: 8 },
                     { required: true }
                   )}
                 />
-                {errors.retry_password && <span>*Повторите пароль!</span>}
+                {errors.re_password && <span>*Повторите пароль!</span>}
                 <input
                   className="submit_button"
                   type="submit"
