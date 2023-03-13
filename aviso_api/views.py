@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, reverse, HttpResponseRedirect, redirect
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
@@ -9,10 +9,31 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from social_core.backends.google import GoogleOAuth2
 from social_core.backends.vk import VKOAuth2
-
+from django.contrib.auth import authenticate, login, logout
 from .serializers import *
 from .models import *
 
+
+def login_signup(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        user = authenticate(username=email, password=password)
+        if user:
+            login(request, user)
+            return HttpResponseRedirect(reverse('/'))
+        else:
+            createUser = User(username=email)
+            createUser.set_password(password)
+            createUser.save()
+            user = authenticate(username=email, password=password)
+            login(request, user)
+            return HttpResponseRedirect(reverse('/'))
+
+    return HttpResponseRedirect(reverse('login'))
+
+def redirect_tog(request):
+    return redirect('social:begin', 'google-oauth2')
 
 @api_view(['GET'])
 def get_news(request):
@@ -119,6 +140,9 @@ def create_order(request):
         serializer.save()
         return Response(serializer.data, status=200)
     return Response(serializer.errors, status=400)
+
+
+
 
 
 
