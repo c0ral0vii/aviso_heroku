@@ -3,9 +3,10 @@ const AUTH_USER = "AUTH_USER";
 const AUTHORIZED = "AUTHORIZED";
 
 let initialState = {
+  login: null,
   email: null,
-  password: null,
   isAuth: false,
+  id: null,
 };
 
 const authReducer = (state = initialState, action) => {
@@ -14,7 +15,9 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         isAuth: (state.isAuth = true),
-        email: (state.email = action.payload),
+        email: (state.email = action.payload.email),
+        login: (state.login = action.payload.username),
+        id: (state.id = action.payload.id),
       };
 
     case AUTH_USER:
