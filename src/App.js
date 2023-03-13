@@ -6,6 +6,7 @@ import Loader from "./components/loader/loader";
 import NavBar from "./components/nav-bar/nav-bar";
 import AdvertisePage from "./pages/advertise-page/advertise-page";
 import AgreementPage from "./pages/agreement-page/agreement-page";
+import Articles from "./pages/articles-page/articles";
 import ContactsPage from "./pages/contacts-page/contact-page";
 import FaqPage from "./pages/faq-page/faq-page";
 import PolicyPage from "./pages/privacy-policy/privacy-policy";
@@ -23,7 +24,9 @@ const CompetitionPage = React.lazy(() =>
   import("./pages/competition-page/competiton-page")
 );
 
+
 const AuthPage = React.lazy(() => import("./pages/login-auth-page/auth"));
+const ProfilePage = React.lazy(() => import("./pages/profile-page/profile-page"));
 const LoginPage = React.lazy(() => import("./pages/login-auth-page/login"));
 
 function App() {
@@ -41,8 +44,10 @@ function App() {
             <Route path="/articles" element={<ArticlesPage />} />
             <Route path="/competition" element={<CompetitionPage />} />
             <Route path="/advertise" element={<AdvertisePage />} />
+            <Route path="/articles/:title" element={<Articles />} />
             <Route path="/rules" element={<RulesPage />} />
             <Route path="/agreement" element={<AgreementPage />} />
+            <Route path="/profile/*" element={<ProfilePage />} />
             <Route path="/privasy-policy" element={<PolicyPage />} />
             <Route path="/contact" element={<ContactsPage />} />
             <Route path="/support" element={<SupportPage />} />

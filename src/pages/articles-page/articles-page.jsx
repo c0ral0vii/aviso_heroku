@@ -2,12 +2,14 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { getArticlesAction } from "../../redux/getItems-actions";
 import "./articles-page.css";
 import "../news-page/news-page.css";
 
 function ArticlesPage() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const articles = useSelector((state) => state.items.articles);
   React.useEffect(() => {
     document.title = `Статьи`;
@@ -19,8 +21,9 @@ function ArticlesPage() {
   useEffect(() => {
     dispatch(getArticlesAction());
   }, [dispatch]);
-
-  console.log(articles);
+  const aboutPost = (title) => {
+    navigate(`/articles/${title}`);
+  };
   return (
     <div className="articles_page">
       <div
@@ -47,14 +50,22 @@ function ArticlesPage() {
               data-aos="fade-up"
               data-aos-duration="1000"
             >
-              <div className="news_post_top article_title">
-              <p>{article.title}</p>
+              <div
+                className="news_post_top article_title"
+                onClick={() => aboutPost(article.title)}
+              >
+                <p>{article.title}</p>
               </div>
-              <div className="news_post_img">
-                <img src={article.img} alt={article.img} />
-              </div>
+              {article.img ? (
+                <div className="news_post_img">
+                  <img src={article.img} alt={article.img} />
+                </div>
+              ) : (
+                ""
+              )}
+
               <div className="news_post_content">
-                <p>{article.content}</p>
+                <p>{article.preview} ...</p>
               </div>
               <div className="default_text">
                 <p>Дата публикации {article.time_created.slice(0, 10)}</p>

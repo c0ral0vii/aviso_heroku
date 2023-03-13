@@ -14,6 +14,25 @@ export const ItemsApi = {
     return response.data;
   },
 };
+export const authAPI = {
+  auth(data) {
+    return instance.post(`auth/users/`, data);
+  },
+  me() {
+    return instance.get(`auth/me`);
+  },
+  login(email, password, rememberMe = false, captcha = false) {
+    return instance.post(`auth/login`, {
+      email,
+      password,
+      rememberMe,
+      captcha,
+    });
+  },
+  logout() {
+    return instance.delete(`auth/login`);
+  },
+};
 
 // export const profileAPI = {
 //   getProfile(userId) {
@@ -36,23 +55,6 @@ export const ItemsApi = {
 //   },
 //   saveProfile(profile) {
 //     return instance.put(`profile`, profile);
-//   },
-// };
-
-// export const authAPI = {
-//   me() {
-//     return instance.get(`auth/me`);
-//   },
-//   login(email, password, rememberMe = false, captcha = false) {
-//     return instance.post(`auth/login`, {
-//       email,
-//       password,
-//       rememberMe,
-//       captcha,
-//     });
-//   },
-//   logout() {
-//     return instance.delete(`auth/login`);
 //   },
 // };
 
